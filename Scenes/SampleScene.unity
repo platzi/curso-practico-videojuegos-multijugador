@@ -335,9 +335,13 @@ MonoBehaviour:
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 2462110654515851563, guid: a5ee1e4ce5077234ea58df854d927de0, type: 3}
   leftRacketSpawn: {fileID: 417578695}
   rightRacketSpawn: {fileID: 766761458}
+  ballPrefab: {fileID: 2462110654515851563, guid: a5ee1e4ce5077234ea58df854d927de0,
+    type: 3}
+  ball: {fileID: 0}
 --- !u!4 &2032267316
 Transform:
   m_ObjectHideFlags: 0
