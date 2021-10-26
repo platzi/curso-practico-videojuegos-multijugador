@@ -5,15 +5,18 @@ using Mirror;
 
 public class NetworkManagerPong : NetworkManager
 {
-    // Start is called before the first frame update
-    void Start()
+    public Transform leftRacketSpawn;
+    public Transform rightRacketSpawn;
+
+    public override void OnServerAddPlayer(NetworkConnection conn)
     {
-        
+        Transform startPosition = numPlayers == 0 ? leftRacketSpawn : rightRacketSpawn;
+        GameObject player = Instantiate(playerPrefab, startPosition.position, Quaternion.identity);
+        NetworkServer.AddPlayerForConnection(conn, player);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnServerDisconnect(NetworkConnection conn)
     {
-        
+        base.OnServerDisconnect(conn);
     }
 }
