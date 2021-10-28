@@ -9,7 +9,8 @@ public class Ball : NetworkBehaviour
     public float speed = 30;
     public Rigidbody2D rb;
 
-    IEnumerator StartBall() {
+    IEnumerator StartBall()
+    {
         rb.simulated = false;
         rb.velocity = Vector2.zero;
         transform.position = Vector2.zero;
@@ -20,12 +21,15 @@ public class Ball : NetworkBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public override void OnStartServer()
     {
         StartCoroutine(StartBall());
-        textScore = FindObjectOfType<TMP_Text>();
-
         networkManager = FindObjectOfType<NetworkManagerPong>();
+    }
+
+    void Start()
+    {
+        textScore = FindObjectOfType<TMP_Text>();
     }
 
     float HitFactor(Vector2 ballPosition, Vector2 racketPosition, float racketHeight)
@@ -53,23 +57,27 @@ public class Ball : NetworkBehaviour
     public int rightScore;
     public TMP_Text textScore;
 
-    void Update(){
-
-        if (transform.position.x > networkManager.rightRacketSpawn.position.x){
-            leftScore ++;
+    [ServerCallback]
+    void Update()
+    {
+        if (transform.position.x > networkManager.rightRacketSpawn.position.x)
+        {
+            leftScore++;
             StartCoroutine(StartBall());
-            UpdateTextScore(leftScore, rightScore);
+            RpcUpdateTextScore(leftScore, rightScore);
         }
-        if (transform.position.x < networkManager.leftRacketSpawn.position.x){
-            rightScore ++;
+        if (transform.position.x < networkManager.leftRacketSpawn.position.x)
+        {
+            rightScore++;
             StartCoroutine(StartBall());
-            UpdateTextScore(leftScore, rightScore);
+            RpcUpdateTextScore(leftScore, rightScore);
         }
-
     }
 
 
-    void UpdateTextScore(int leftScore, int rightScore){
+    [ClientRpc]
+    public void RpcUpdateTextScore(int leftScore, int rightScore)
+    {
         textScore.text = $"{leftScore} - {rightScore}";
     }
 }

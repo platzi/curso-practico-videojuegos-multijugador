@@ -9,7 +9,7 @@ public class NetworkManagerPong : NetworkManager
     public Transform rightRacketSpawn;
 
     public GameObject ballPrefab;
-    public GameObject ball;
+    public Ball ball;
 
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
@@ -17,9 +17,10 @@ public class NetworkManagerPong : NetworkManager
         GameObject player = Instantiate(playerPrefab, startPosition.position, Quaternion.identity);
         NetworkServer.AddPlayerForConnection(conn, player);
 
-        if (numPlayers == 1){
-            ball = Instantiate(ballPrefab, Vector3.zero, Quaternion.identity);
-            NetworkServer.Spawn(ball);
+        if (numPlayers == 2){
+            var tempBall = Instantiate(ballPrefab, Vector3.zero, Quaternion.identity);
+            NetworkServer.Spawn(tempBall);
+            ball = tempBall.GetComponent<Ball>();
         }
     }
 
@@ -27,7 +28,8 @@ public class NetworkManagerPong : NetworkManager
     {
         if (ball != null)
         {
-            NetworkServer.Destroy(ball);
+            ball.textScore.text = "0 - 0";
+            NetworkServer.Destroy(ball.gameObject);
         }
 
         base.OnServerDisconnect(conn);
