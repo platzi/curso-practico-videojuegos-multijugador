@@ -17,7 +17,7 @@ public class NetworkManagerPong : NetworkManager
         GameObject player = Instantiate(playerPrefab, startPosition.position, Quaternion.identity);
         NetworkServer.AddPlayerForConnection(conn, player);
 
-        if (numPlayers == 2){
+        if (numPlayers == 1){
             ball = Instantiate(ballPrefab, Vector3.zero, Quaternion.identity);
             NetworkServer.Spawn(ball);
         }
