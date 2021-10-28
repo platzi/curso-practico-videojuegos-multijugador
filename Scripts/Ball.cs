@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using TMPro;
 
 public class Ball : NetworkBehaviour
 {
     public float speed = 30;
     public Rigidbody2D rb;
 
+    IEnumerator StartBall() {
+        rb.simulated = false;
+        rb.velocity = Vector2.zero;
+        transform.position = Vector2.zero;
+        yield return new WaitForSeconds(2);
+        rb.simulated = true;
+        float direction = Random.Range(0f, 1f) > 0.5f ? 1 : -1;
+        rb.velocity = Vector2.right * speed * direction;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        rb.simulated = true;
-        rb.velocity = Vector2.left * speed;
+        StartCoroutine(StartBall());
+        textScore = FindObjectOfType<TMP_Text>();
+
+        networkManager = FindObjectOfType<NetworkManagerPong>();
     }
 
     float HitFactor(Vector2 ballPosition, Vector2 racketPosition, float racketHeight)
@@ -33,5 +46,30 @@ public class Ball : NetworkBehaviour
             Vector2 dir = new Vector2(x, y).normalized;
             rb.velocity = dir * speed;
         }
+    }
+
+    NetworkManagerPong networkManager;
+    public int leftScore;
+    public int rightScore;
+    public TMP_Text textScore;
+
+    void Update(){
+
+        if (transform.position.x > networkManager.rightRacketSpawn.position.x){
+            leftScore ++;
+            StartCoroutine(StartBall());
+            UpdateTextScore(leftScore, rightScore);
+        }
+        if (transform.position.x < networkManager.leftRacketSpawn.position.x){
+            rightScore ++;
+            StartCoroutine(StartBall());
+            UpdateTextScore(leftScore, rightScore);
+        }
+
+    }
+
+
+    void UpdateTextScore(int leftScore, int rightScore){
+        textScore.text = $"{leftScore} - {rightScore}";
     }
 }
