@@ -19,4 +19,9 @@ En este repositorio encontraras todos los ejemplos vistos en el curso
 * [Clase 11: Reto: cambia el color de tu raqueta WIP]()
 * [Clase 12: Reto: fin de juego WIP]()
 
+## Como utilizar los assets
+1. Crea un nuevo proyecto en Unity, la version de tu preferencia
+2. Descarga el proyecto de este repositorio
+3. Copia y pega el contenido en la carpeta de assets 
+
 Con 💚 Platzi Team
