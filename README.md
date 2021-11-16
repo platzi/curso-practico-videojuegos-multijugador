@@ -16,7 +16,7 @@ En este repositorio encontraras todos los ejemplos vistos en el curso
 * [Clase 8: Interfaz del puntaje](https://github.com/platzi/curso-practico-videojuegos-multijugador/commit/ffbf7b12704e02df2a59e15e6eabe208ca8f4997)
 * [Clase 9: Puntaje local (monojugador)](https://github.com/platzi/curso-practico-videojuegos-multijugador/commit/5d90e816dac4c921bcbde458651c14aaa145b050)
 * [Clase 10: Puntaje multijugador con variables sincronizadas](https://github.com/platzi/curso-practico-videojuegos-multijugador/commit/273cb83d0c7a84f63d20573946cbca05e04537c7)
-* [Clase 11: Reto: cambia el color de tu raqueta WIP](https://github.com/platzi/curso-practico-videojuegos-multijugador/commit/fa20648eceb0f91d33a14d05957787ada8fa988e)
+* [Clase 11: Reto: cambia el color de tu raqueta](https://github.com/platzi/curso-practico-videojuegos-multijugador/commit/fa20648eceb0f91d33a14d05957787ada8fa988e)
 * [Clase 12: Reto: fin de juego WIP]()
 
 ## Como utilizar los assets
