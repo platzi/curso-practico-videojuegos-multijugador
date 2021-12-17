@@ -17,7 +17,7 @@ En este repositorio encontraras todos los ejemplos vistos en el curso
 * [Clase 9: Puntaje local (monojugador)](https://github.com/platzi/curso-practico-videojuegos-multijugador/commit/5d90e816dac4c921bcbde458651c14aaa145b050)
 * [Clase 10: Puntaje multijugador con variables sincronizadas](https://github.com/platzi/curso-practico-videojuegos-multijugador/commit/273cb83d0c7a84f63d20573946cbca05e04537c7)
 * [Clase 11: Reto: cambia el color de tu raqueta](https://github.com/platzi/curso-practico-videojuegos-multijugador/commit/fa20648eceb0f91d33a14d05957787ada8fa988e)
-* [Clase 12: Reto: fin de juego WIP]()
+* [Clase 12: Reto: fin de juego](https://github.com/platzi/curso-practico-videojuegos-multijugador/commit/250a5a8218773ad17a14bd73210c4715d2a6edfd#diff-a45278768dc487db003e3c2399d73c565b0df10a3f6b07d39f96d1cb47ef7700L9)
 
 ## Como utilizar los assets
 1. Crea un nuevo proyecto en Unity, la version de tu preferencia
